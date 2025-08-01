@@ -1,5 +1,10 @@
 # Builder stage
 FROM python:3.11-slim AS builder
+
+
+LABEL maintainer="Kaothar Adedeji" 
+LABEL created="2025-07-30"
+
 WORKDIR /app
 
 ENV PIP_NO_CACHE_DIR=1 \
@@ -14,6 +19,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Runtime stage
 FROM python:3.11-slim
+
+LABEL maintainer="Kaothar Adedeji" 
+LABEL created="2025-07-30"
+
 WORKDIR /app
 
 ENV PIP_NO_CACHE_DIR=1 \

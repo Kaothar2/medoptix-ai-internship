@@ -8,6 +8,7 @@ from typing import Dict, Any , Tuple, List
 from pydantic import BaseModel, Field
 import os
 from app.prediction import MedoptixPredictor
+from typing import Optional
 
 logger = logging.getLogger(__name__)
 
@@ -44,13 +45,13 @@ class PatientData(BaseModel):
 
     # session information
     n_sessions: int = Field(..., ge=0, description="Number of sessions attended")
-    avg_session_duration: float = Field(..., ge=0, description="Average session duration in minutes")
-    first_week : int = Field(..., ge=0, description="Number of sessions in the first week")
-    last_week : int = Field(..., ge=0, description="Number of sessions in the last week")
-    mean_pain: float = Field(..., description="Mean pain score")
-    mean_pain_delta: float = Field(...,  description="Change in mean pain score")
-    home_adherence_mean: float = Field(..., ge=0, description="Mean home exercise adherence score")
-    satisfaction_mean: float = Field(..., ge=0, description="Mean patient satisfaction score")
+    avg_session_duration: Optional[float] = Field(None, ge=0, description="Average session duration in minutes")
+    first_week : Optional[int] = Field(None, ge=0, description="Number of sessions in the first week")
+    last_week : Optional[int] = Field(None, ge=0, description="Number of sessions in the last week")
+    mean_pain: Optional[float] = Field(None, description="Mean pain score")
+    mean_pain_delta: Optional[float] = Field(None,  description="Change in mean pain score")
+    home_adherence_mean: Optional[float] = Field(None, ge=0, description="Mean home exercise adherence score")
+    satisfaction_mean: Optional[float] = Field(None, ge=0, description="Mean patient satisfaction score")
 
 
     class Config:
