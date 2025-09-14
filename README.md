@@ -1,7 +1,7 @@
 # MedOptix AI – Personalized Treatment Optimization in European Healthcare
 
 **Amdari Internship Accelerator – June 2025**
-**Facilitator:** Muhammad Yekini
+**Name:** Kaothar Adedeji
 
 ---
 
@@ -49,9 +49,9 @@ dashboards/   → Visual interfaces using Streamlit or Power BI
 | Phase            | Status         | Notes                           |
 | ---------------- | -------------- | ------------------------------- |
 | Data Engineering | ✅ Completed   | Tables created, ETL ready       |
-| EDA              | ⏳ In Progress | Pain trends & dropouts underway |
-| Modeling         | ⏳ Pending     | Starts June 22                  |
-| API + CI/CD      | ⏳ Pending     | After model training            |
+| EDA              | ✅ Completed   | Pain trends & dropouts underway |
+| Modeling         | ✅ Completed   | Starts June 22                  |
+| API + CI/CD      | ✅ Completed   | After model training            |
 | Dashboard        | ⏳ Pending     | Streamlit or Power BI           |
 
 ---
