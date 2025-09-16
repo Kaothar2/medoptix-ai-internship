@@ -2,47 +2,56 @@ name: Deploy to EC2
 
 on:
   push:
-    branches: [main]
-  workflow-dispatch:
+    branches:
+      - main
+      - organize-project
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    # checkout the code and deploy to EC2
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Deloy to EC2
-        uses: appleboy/scp-action@master
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
-
           script: |
+            set -e
 
-            # install docker and docker-compose
-            sudo apt-get update
-            sudo apt-get install -y docker.io docker-compose
+            # Install docker & docker-compose if missing
+            if ! command -v docker &> /dev/null; then
+              sudo apt-get update
+              sudo apt-get install -y docker.io docker-compose git
+              sudo systemctl start docker
+              sudo systemctl enable docker
+            fi
 
-            #create directories if they do not exist
-            cd home/ubuntu/medoptix-api || mkdir home/ubuntu/medoptix-api cd home/ubuntu/medoptix-api
+            # Prepare project directory
+            mkdir -p /home/ubuntu/medoptix-api
+            cd /home/ubuntu/medoptix-api
 
-            # pull the latest code
-            git pull origin main || git clone https://github.com/${{ github.repository }}.
+            # Pull latest repo
+            if [ -d ".git" ]; then
+              git fetch origin main
+              git reset --hard origin/main
+            else
+              git clone https://github.com/${{ github.repository }} .
+            fi
 
-            # stop exiting docker container
-            docker stop medoptix-api || true
+            # Stop old containers
+            docker-compose down || true
 
-            #pull the latest docker image
-            docker pull ${{ secrets.DOCKER_USERNAME }}/medoptix-api:latest
-
-            # START the docker compose
+            # Start fresh
             docker-compose up -d --build
 
-            # health check
+            # Health check
+            echo "Waiting for service..."
             sleep 30
             curl -f http://localhost:8000/health || exit 1
-            echo "Deployment successful!"
+            echo "✅ Deployment successful!"
