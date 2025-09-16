@@ -369,9 +369,10 @@ medoptix-ai/
 │   ├── api/                # API route definitions
 │   └── core/               # Configuration and utilities
 ├── notebooks/
-│   ├── 01_data_exploration.ipynb
-│   ├── 02_feature_engineering.ipynb
-│   └── 03_model_training.ipynb
+│   ├── 01_medoptix_ETL.ipynb
+│   ├── 02_medoptix_feature engineering EDA.ipynb
+│   ├── 03_medoptix_segmentation.ipynb
+│   └── 03_medoptix_prediction.ipynb
 ├── models/
 │   ├── dropout_model.pkl   # Trained dropout prediction model
 │   └── cluster_model.pkl   # Trained clustering model
