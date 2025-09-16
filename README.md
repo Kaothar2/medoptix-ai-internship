@@ -196,7 +196,7 @@ Content-Type: application/json
 
 **Dropout Prediction:**
 ```bash
-curl -X POST "https://sabisave.info/predict" \
+curl -X POST "https://dataml.xyz/predict" \
   -H "Content-Type: application/json" \
   -d '{
     "gender": "Female",
@@ -215,7 +215,7 @@ curl -X POST "https://sabisave.info/predict" \
 
 **Patient Clustering:**
 ```bash
-curl -X POST "https://sabisave.info/cluster" \
+curl -X POST "https://dataml.xyz/cluster" \
   -H "Content-Type: application/json" \
   -d '{
     "no_of_sessions_attended": 12,
