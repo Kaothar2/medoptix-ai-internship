@@ -111,8 +111,8 @@ graph TD
 
 ### Base URL
 ```
-Production: https://dataml.xyz.info
-Health Check: https://dataml.xyz.info/health
+Production: https://dataml.xyz
+Health Check: https://dataml.xyz/health
 ```
 
 ### Endpoints
