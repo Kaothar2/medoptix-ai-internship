@@ -1,8 +1,13 @@
 # MedOptix AI: Production ML System for Healthcare Analytics
 
+<<<<<<< HEAD
 [![API Status](https://img.shields.io/badge/API-Live-brightgreen)](https://dataml.xyz)
 [![Build Status](https://img.shields.io/github/workflow/status/username/repo/CI)](https://github.com/username/repo/actions)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+=======
+**Amdari Internship Accelerator – June 2025**
+**Name:** Kaothar Adedeji
+>>>>>>> d5af5064dc0a14dab440d4af8154c0a7eca45cff
 
 A production-grade machine learning system that predicts patient dropout risk and performs patient segmentation to help healthcare providers improve patient retention and personalize care delivery.
 
@@ -430,4 +435,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
+
 **⭐ If this project helped you, please give it a star!**
+
